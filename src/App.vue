@@ -69,14 +69,14 @@ export default {
 
         {
             id: 2,
-          text: "Which is the India's largest and the oldest museum?",
+          text: "Which famous singer released a song called “Adore You”?",
 
           responses: [
-            { id: 5, text: "	Indian Museum, Kolkata", correct: true },
+            { id: 5, text: "Harry Styles", correct: true },
             
-            { id: 6, text: "National Museum, New Delhi", correct: false },
-            { id: 7, text: "Allahabad Museum", correct: false },
-            { id: 8, text: "Salar Jung Museum, Hyderabad", correct: false },
+            { id: 6, text: "Dua Lipa", correct: false },
+            { id: 7, text: "Halsey", correct: false },
+            { id: 8, text: "Shawn Mendes", correct: false },
           ],
         },
 
@@ -269,11 +269,11 @@ export default {
 
 p {
   border: 3px solid gray;
-  height: 45px;
-  width: 40%;
+  height: 49px;
+  width: 50%;
   border-radius: 25px;
   text-align: center;
-  margin-left: 25%;
+  margin-left:22%;
   margin-top: 20px;
   cursor: pointer;
   
