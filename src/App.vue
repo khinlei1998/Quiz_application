@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-   <h3>Vue Quiz</h3>
+   
     
     <h3 v-show="questionindex != questions.length">Question:{{this.questionno}}/{{ questions.length}} </h3>
     <div
@@ -16,22 +16,22 @@
         v-for="(response, index) in questions[index].responses"
         :key="response.id"
         @click="clickanswer(response.id)"
-        :class="{ red: response.id == selectedanswer }"
+        :class="{ red: response.id == selectedanswer,  active: hover }"
       >
         {{ response.text }} {{ index.text }}
-      </p>
-      <button
-        class="btn btn-success"
-        @click="next()"
-        v-show="questionindex != questions.length"
-      >
-        Next
-      </button>
+     </p>
+        <button @click="next()"  v-show="questionindex != questions.length" type="button" class="btn btn-secondary">Next</button>
     </div>
 
     <div id="showresult" v-show="questionindex === questions.length">
-      Total Score:{{ score }} / {{ questions.length }}
+      <h4 v-if="score>=5">You did a great job!</h4>
+      <h4 v-else>You did a poor job!</h4>
+      <h5>Total Score:{{ score }} / {{ questions.length }}</h5>
+     
+      <button @click="restart" type="button" class="btn btn-secondary">Restart</button>
+      <i class="glyphicon glyphicon-thumbs-up"></i>
     </div>
+   
   </div>
 </template>
 
@@ -46,6 +46,8 @@ export default {
       selectedanswer: "null",
       selected: "false",
       correctQuestion: [],
+      hover:false,
+   
       //  userResponses:Array(this.questions.length).fill(null) ,
 
       // 1
@@ -232,6 +234,13 @@ export default {
         console.log("false");
       }
     },
+
+    restart:function(){
+      // alert('hh')
+      this.questionindex=0;
+      this.questionno=1;
+
+    },
   },
 };
 </script>
@@ -266,12 +275,13 @@ p {
   text-align: center;
   margin-left: 25%;
   margin-top: 20px;
-  
+  cursor: pointer;
   
 }
-/* p:hover{
+
+p:hover{
   background-color: #D1D1D1;
-} */
+}
 .red {
   background-color: grey;
 }
@@ -279,14 +289,21 @@ h2 {
   text-align: center;
   margin-top: 10px;
 }
-.btn-success {
+.btn-secondary {
   margin-left: 65%;
 }
-.btn-success[data-v-7ba5bd90] {
+.btn-secondary[data-v-7ba5bd90] {
     margin-left: 75%;
 }
 #showresult{
   text-align: center;
-   border: 1px solid black;
+   border: 1px solid black; 
+   padding:40px;
+   background-color: black;
+   color: white;
 }
+h5{
+  padding: 3px;
+}
+
 </style>
